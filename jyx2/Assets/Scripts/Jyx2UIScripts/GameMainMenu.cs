@@ -54,7 +54,7 @@ public partial class GameMainMenu : Jyx2_UIBase {
             if (!StoryEngine.DoLoadGame(index) && m_panelType==PanelType.Home){
                 OnNewGame();
             }
-        }));
+        }),"选择读档位");
     }
 
     public void OnQuitGameClicked()
@@ -138,20 +138,27 @@ public partial class GameMainMenu : Jyx2_UIBase {
         RoleInstance role = GameRuntimeData.Instance.Player;
         for (int i = 1; i <= 12; i++)
         {
-            string key = i.ToString();
-            if (!GameConst.ProItemDic.ContainsKey(key))
-                continue;
-            PropertyItem item = GameConst.ProItemDic[key];
-            int value = Tools.GetRandomInt(item.DefaulMin, item.DefaulMax);
-            role.GetType().GetProperty(item.PropertyName).SetValue(role, value);
+			GenerateRamdomPro(role, i);
         }
+		GenerateRamdomPro(role, 25);//资质
         m_randomProperty. RefreshProperty();
     }
+	
+	private void GenerateRamdomPro(RoleInstance role, int i)
+	{
+		string key = i.ToString();
+		if (GameConst.ProItemDic.ContainsKey(key)){
+			PropertyItem item = GameConst.ProItemDic[key];
+			int value = Tools.GetRandomInt(item.DefaulMin, item.DefaulMax);
+			role.GetType().GetProperty(item.PropertyName).SetValue(role, value);
+		}
+	}
 	
 	private void OnBackBtnClicked()
 	{
         this.homeBtnAndTxtPanel_RectTransform.gameObject.SetActive(true);
         this.InputNamePanel_RectTransform.gameObject.SetActive(false);
+		m_panelType = PanelType.Home;
 	}
 
     protected override void OnHidePanel()

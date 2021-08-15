@@ -1,6 +1,5 @@
 # 金庸群侠传3D重制版
 
-![coverage](https://img.shields.io/badge/coverage-80%25-yellowgreen)
 [![license](https://img.shields.io/badge/license-MIT%2B%E9%87%91%E7%BE%A43D%E9%87%8D%E5%88%B6%E7%89%88%E7%A4%BE%E5%8C%BA%E5%8D%8F%E8%AE%AE-blue)](https://github.com/jynew/jynew/blob/main/LICENSE)
 [![release](https://img.shields.io/badge/release-v0.1%20inner-brightgreen)](https://github.com/jynew/jynew/releases)
 [![Unity Version](https://img.shields.io/badge/unity-2020.3.9.f1c1-blue)](https://unity.cn/releases/lts/2020) 
@@ -10,6 +9,13 @@
 ![fork](https://img.shields.io/github/forks/jynew/jynew?style=social)
 ![star](https://img.shields.io/github/stars/jynew/jynew?style=social)
 
+
+
+# ------------------这非常重要!!!!!!!!!!!!!------------------
+
+* # 项目必看 [项目Wiki](https://github.com/jynew/jynew/wiki)
+
+# ------------------这非常重要!!!!!!!!!!!!!------------------  
 
 
 
@@ -36,7 +42,7 @@
 ![image](https://user-images.githubusercontent.com/7448857/118384459-b53c8c00-b638-11eb-8a83-80228747067f.png)
 ![image](https://user-images.githubusercontent.com/7448857/118384466-b968a980-b638-11eb-89b3-11aec9ee8bd2.png)
 
-  
+
 ## 项目文档导航
 
 * 查看[开发环境和搭建](https://github.com/jynew/jynew/wiki/1.1%E5%87%86%E5%A4%87%E5%BC%80%E5%A7%8B)来将你本地的游戏环境运行起来！

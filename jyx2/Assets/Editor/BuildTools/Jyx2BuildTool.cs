@@ -2,11 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using CSObjectWrapEditor;
 using Jyx2.Editor;
 using NPOI.OpenXml4Net.OPC.Internal;
 using UnityEditor;
 using UnityEditor.AddressableAssets.Settings;
 using UnityEngine;
+using XLua;
 
 namespace Jyx2Editor.BuildTool
 {
@@ -107,6 +109,9 @@ namespace Jyx2Editor.BuildTool
             //     PlayerSettings.Android.keyaliasPass = "password";
             // }
 
+            PlayerSettings.Android.keystorePass = "123456";
+            PlayerSettings.Android.keyaliasPass = "123456";
+            
             var csDefineSymbol = GetEnvironmentVariable(EnvOption.CS_DEF_SYMBOL);
             if (!string.IsNullOrEmpty(csDefineSymbol))
             {
@@ -170,7 +175,14 @@ namespace Jyx2Editor.BuildTool
             GenDataMenuCmd.GenerateDataForce();
 
             // 处理场景文件
-            AddScenesToBuildTool.AddScenesToBuild();
+            //AddScenesToBuildTool.AddScenesToBuild();
+            
+            //生成luaWrap
+            DelegateBridge.Gen_Flag = true;
+            Generator.ClearAll();
+            Generator.GenAll();
+            
+            AssetDatabase.Refresh();
 
             //打包
             BuildPipeline.BuildPlayer(buildPlayerOptions);

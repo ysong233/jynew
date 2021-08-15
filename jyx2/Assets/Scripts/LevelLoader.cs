@@ -13,6 +13,7 @@ using HanSquirrel.ResourceManager;
 using HSFrameWork.ConfigTable;
 using Jyx2;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace Jyx2
 {
@@ -36,37 +37,6 @@ namespace Jyx2
                 if (map != null)
                 {
                     GameRuntimeData.Instance.CurrentMap = map.Key;
-                    //GameRuntimeData.Instance.CurrentPos = "";
-
-                    //非战斗场景清理数据
-                    if (!map.Tags.Contains("BATTLE"))
-                    {
-                        //MapRuntimeData.Instance.Clear();
-
-                        //清理重复角色
-                        //GameRuntimeData.Instance.CurrentTeam.RemoveAll(role => !GameRuntimeData.Instance.Team.Contains(role));
-
-                        //从GameRuntimeData复制队伍信息到地图数据
-                        //if (map.Tags.Contains("PLAYER_ONLY"))
-                        //{
-                        //    MapRuntimeData.Instance.AddToExploreTeam(GameRuntimeData.Instance.CurrentTeam[0]);
-                        //}
-                        //else
-                        //{
-                        //    foreach (var role in GameRuntimeData.Instance.CurrentTeam)
-                        //    {
-                        //        MapRuntimeData.Instance.AddToExploreTeam(role);
-                        //    }
-                        //}
-
-                        //初始化队伍状态
-                        //foreach (var r in GameConst.MapTeam)
-                        //{
-                        //    r.Hp = r.Maxhp;
-                        //}
-                    }
-                    //存档
-                    //GameRuntimeData.Instance.GameSave();
                 }
             }
 
@@ -96,10 +66,11 @@ namespace Jyx2
             var battle = ConfigTable.Get<Jyx2Battle>(battleId);
 
             string sceneName = "Jyx2Battle_" + battle.MapId;
-            if(!Application.CanStreamedLevelBeLoaded(sceneName))
+
+            /*if(!Application.CanStreamedLevelBeLoaded(sceneName))
             {
                 sceneName = "BattleScene_hufeiju";
-            }
+            }*/
 
             LoadingPanel.Create(sceneName, ()=> {
 

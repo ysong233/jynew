@@ -42,8 +42,9 @@ public class Jyx2ItemUI : MonoBehaviour
     public void Show(int id,int count)
     {
         _id = id;
-        var item = GetItem();
-        m_NameText.text = item.Name;
+        var item = GetItem();//0-阴性内力，1-阳性内力，2-中性内力
+		var color=item.ItemType==2? item.NeedMPType==2?ColorStringDefine.Default:item.NeedMPType==1?ColorStringDefine.Mp_type1:ColorStringDefine.Mp_type0:ColorStringDefine.Default;
+        m_NameText.text = $"<color={color}>{item.Name}</color>";
         m_CountText.text = (count > 1 ? count.ToString() : "");
 
         Jyx2ResourceHelper.GetItemSprite(id, m_Image);

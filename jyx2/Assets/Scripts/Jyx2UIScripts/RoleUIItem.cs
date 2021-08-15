@@ -30,7 +30,7 @@ public class RoleUIItem : MonoBehaviour
     Text m_roleName;
     Text m_roleInfo;
     RoleInstance m_role;
-    List<int> m_showPropertyIds = new List<int>(){ 13, 15, 14 };//要显示的属性
+    List<int> m_showPropertyIds = new List<int>(){ 14, 13, 15 };//要显示的属性
 
     void InitTrans() 
     {
@@ -65,7 +65,9 @@ public class RoleUIItem : MonoBehaviour
             var proItem = GameConst.ProItemDic[proId];
             if (proItem.PropertyName == "Hp")
             {
-                sb.Append($"{proItem.Name}:{m_role.Hp}/{m_role.MaxHp}\n");
+				var color1 = m_role.GetHPColor1();
+				var color2 = m_role.GetHPColor2();
+                sb.Append($"{proItem.Name}:<color={color1}>{m_role.Hp}</color>/<color={color2}>{m_role.MaxHp}</color>\n");
             }
             else if (proItem.PropertyName == "Tili")
             {
@@ -73,7 +75,8 @@ public class RoleUIItem : MonoBehaviour
             }
             else if (proItem.PropertyName == "Mp")
             {
-                sb.Append($"{proItem.Name}:{m_role.Mp}/{m_role.MaxMp}\n");
+				var color = m_role.GetMPColor();
+		        sb.Append($"{proItem.Name}:<color={color}>{m_role.Mp}/{m_role.MaxMp}</color>\n");
             }
             else 
             {

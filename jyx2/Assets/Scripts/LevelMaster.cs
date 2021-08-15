@@ -39,6 +39,7 @@ public class LevelMaster : MonoBehaviour
         public LevelLoadType loadType = LevelLoadType.Entrance;
         public string triggerName = "";
         public string CurrentPos;
+        public string CurrentOri;
     }
 
     static public LevelLoadPara loadPara = new LevelLoadPara();
@@ -207,6 +208,17 @@ public class LevelMaster : MonoBehaviour
                     c.enabled = true;
             }
         }
+        
+        
+        //修复所有没有绑定controller的角色
+        foreach (var animator in FindObjectsOfType<Animator>())
+        {
+            if (animator.runtimeAnimatorController != null) continue;
+            if (animator.transform.parent.name == "NPC")
+            {
+                animator.runtimeAnimatorController = GlobalAssetConfig.Instance.defaultNPCAnimatorController;
+            }
+        }
 
         IsInited = true;
     }
@@ -280,6 +292,7 @@ public class LevelMaster : MonoBehaviour
             {
                 var pos = UnityTools.StringToVector3(runtime.CurrentPos); //从指定位置读取
                 PlayerSpawnAt(pos);
+				PlayerSpawnAt(UnityTools.StringToQuaternion(runtime.CurrentOri));
             }
 
         }
@@ -316,6 +329,7 @@ public class LevelMaster : MonoBehaviour
         }else if(loadPara.loadType == LevelLoadPara.LevelLoadType.StartAtPos)
         {
             PlayerSpawnAt(UnityTools.StringToVector3(loadPara.CurrentPos));
+			PlayerSpawnAt(UnityTools.StringToQuaternion(loadPara.CurrentOri));
         }
     }
 
@@ -325,6 +339,11 @@ public class LevelMaster : MonoBehaviour
         Debug.Log("load pos = " + spawnPos);
         _player.position = spawnPos;
         _playerNavAgent.enabled = true;
+    }
+    void PlayerSpawnAt(Quaternion ori)
+    {
+        Debug.Log("load ori = " + ori);
+        _player.rotation = ori;
     }
 
 
@@ -491,7 +510,7 @@ public class LevelMaster : MonoBehaviour
         if (_playerNavAgent == null || !_playerNavAgent.enabled || !_playerNavAgent.isOnNavMesh) return;
  
         //到达目的地了
-        if (_playerNavAgent.enabled && !_playerNavAgent.isStopped && _playerNavAgent.remainingDistance <= _playerNavAgent.stoppingDistance)
+        if (!_playerNavAgent.pathPending && _playerNavAgent.enabled && !_playerNavAgent.isStopped && _playerNavAgent.remainingDistance <= _playerNavAgent.stoppingDistance)
         {
             _playerNavAgent.isStopped = true;
             if (_OnArriveDestination != null) 
@@ -712,6 +731,11 @@ public class LevelMaster : MonoBehaviour
 		var rootObj = GameObject.Find(path);
         var trans = rootObj.transform.Find(name);
 
+		if(trans == null)
+		{
+			rootObj = GameObject.Find("Level/Dynamic");
+			trans=rootObj.transform.Find(name);
+		}
         if(trans != null)
         {
 			if(target==""){
@@ -762,6 +786,7 @@ public class LevelMaster : MonoBehaviour
         else
         {
             runtime.CurrentPos = UnityTools.Vector3ToString(_player.position);
+			runtime.CurrentOri = UnityTools.QuaternionToString(_player.rotation);
         }
 
         Debug.Log("set current pos = " + runtime.CurrentPos);
@@ -772,6 +797,10 @@ public class LevelMaster : MonoBehaviour
     public Vector3 GetPlayerPosition()
     {
         return _player.position;
+    }
+    public Quaternion GetPlayerOrientation()
+    {
+        return _player.rotation;
     }
 
 	// handle player null exception

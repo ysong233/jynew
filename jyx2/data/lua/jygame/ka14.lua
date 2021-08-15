@@ -11,6 +11,7 @@ if AskJoin () == true then goto label0 end;
         DarkScence();
         ModifyEvent(-2, 7, 0, 0, -1, -1, -1, -1, -1, -1, -1, -2, -2);
         ModifyEvent(-2, 8, 0, 0, -1, -1, -1, -1, -1, -1, -1, -2, -2);
+        jyx2_ReplaceSceneObject("", "NPC/石破天", "");--石破天加入队伍
         LightScence();
         Join(38);
         AddEthics(1);

@@ -1,3 +1,20 @@
+--[[
+/*
+ * 金庸群侠传3D重制版
+ * https://github.com/jynew/jynew
+ *
+ * 这是本开源项目文件头，所有代码均使用MIT协议。
+ * 但游戏内资源和第三方插件、dll等请仔细阅读LICENSE相关授权协议文档。
+ *
+ * 金庸老先生千古！
+ */
+ ]]--
+ 
+ 
+--所有的指令文档可以参阅以下链接
+--https://github.com/jynew/jynew/wiki/%E6%B8%B8%E6%88%8F%E4%BA%8B%E4%BB%B6%E6%8C%87%E4%BB%A4
+
+
 --注释后面标记的是对应的指令号
 
 --0=0|1|0|0|0|
@@ -78,12 +95,12 @@ JudgeSexual = CS.Jyx2.Jyx2LuaBridge.JudgeSexual
 AddEthics = CS.Jyx2.Jyx2LuaBridge.AddEthics
 --38=26|5|0|0|0|ChangeScencePic(#0, #1, #2, #3); --换场景贴图
 ChangeScencePic = CS.Jyx2.Jyx2LuaBridge.ChangeScencePic
---39=27|2|0|0|0|OpenScence(#0); 
-OpenScence = CS.Jyx2.Jyx2LuaBridge.OpenScence
+--39=27|2|0|0|0|OpenScene(#0); 
+OpenScene = CS.Jyx2.Jyx2LuaBridge.OpenScene
 --40=28|2|0|0|0|SetRoleFace(#0);
 SetRoleFace = CS.Jyx2.Jyx2LuaBridge.SetRoleFace
 --41=29|4|0|0|0|NPCGetItem(#0, #1, #2); --NPC角色获得道具
-NPCGetItem = CS.Jyx2.Jyx2LuaBridge.NPCGetItem
+NPCAddItem = CS.Jyx2.Jyx2LuaBridge.NPCGetItem
 --42=2a|3|1|1|2|if JudgeFemaleInTeam() == bool then goto label#x end; --判断队伍里是否有女性
 JudgeFemaleInTeam = CS.Jyx2.Jyx2LuaBridge.JudgeFemaleInTeam
 --43=2b|4|1|2|3|if HaveItem(#0) == bool then goto label#x end; --判断是否拥有道具
@@ -93,7 +110,7 @@ Play2Amination = CS.Jyx2.Jyx2LuaBridge.Play2Amination
 --45=2d|3|0|0|0|AddSpeed(#0, #1);
 AddSpeed = CS.Jyx2.Jyx2LuaBridge.AddSpeed --加速度
 --46=2e|3|0|0|0|AddMP(#0, #1);
-AddMP = CS.Jyx2.Jyx2LuaBridge.AddMP --加内力
+AddMP = CS.Jyx2.Jyx2LuaBridge.AddMaxMp --加内力
 --47=2f|3|0|0|0|AddAttack(#0, #1);
 AddAttack = CS.Jyx2.Jyx2LuaBridge.AddAttack --加攻击力
 --48=30|3|0|0|0|AddHP(#0, #1);
@@ -108,8 +125,8 @@ AskSoftStar = CS.Jyx2.Jyx2LuaBridge.AskSoftStar
 ShowEthics = CS.Jyx2.Jyx2LuaBridge.ShowEthics
 --53=35|1|0|0|0|ShowRepute();
 ShowRepute = CS.Jyx2.Jyx2LuaBridge.ShowRepute
---54=36|1|0|0|0|OpenAllScence();
-OpenAllScence = CS.Jyx2.Jyx2LuaBridge.OpenAllScence
+--54=36|1|0|0|0|OpenAllScene();
+OpenAllScene = CS.Jyx2.Jyx2LuaBridge.OpenAllScene
 --55=37|5|1|3|4|if JudgeEventNum(#0, #1) == bool then goto label#x end;
 JudgeEventNum = CS.Jyx2.Jyx2LuaBridge.JudgeEventNum
 --56=38|2|0|0|0|AddRepute(#0);  --增加声望
@@ -120,8 +137,8 @@ instruct_57 = CS.Jyx2.Jyx2LuaBridge.instruct_57
 FightForTop = CS.Jyx2.Jyx2LuaBridge.FightForTop
 --59=3b|1|0|0|0|AllLeave();
 AllLeave = CS.Jyx2.Jyx2LuaBridge.AllLeave
---60=3c|6|1|4|5|JudgeScencePic(#0, #1, #2, #3, #4);
-JudgeScencePic = CS.Jyx2.Jyx2LuaBridge.JudgeScencePic
+--60=3c|6|1|4|5|JudgeScenePic(#0, #1, #2, #3, #4);
+JudgeScenePic = CS.Jyx2.Jyx2LuaBridge.JudgeScenePic
 --61=3d|3|1|1|2|if Judge14BooksPlaced() == bool then goto label#x end; --这个写法太蠢了，待调整
 Judge14BooksPlaced = CS.Jyx2.Jyx2LuaBridge.Judge14BooksPlaced
 --62=3e|7|0|0|0|EndAmination(#0, #1, #2, #3, #4, #5, #6); --结局动画
@@ -159,6 +176,9 @@ jyx2_StopTimeline = CS.Jyx2.Jyx2LuaBridge.jyx2_StopTimeline
 jyx2_Wait = CS.Jyx2.Jyx2LuaBridge.jyx2_Wait
 jyx2_SwitchRoleAnimation = CS.Jyx2.Jyx2LuaBridge.jyx2_SwitchRoleAnimation
 jyx2_FixMapObject = CS.Jyx2.Jyx2LuaBridge.jyx2_FixMapObject
+jyx2_CheckEventCount = CS.Jyx2.Jyx2LuaBridge.jyx2_CheckEventCount
+jyx2_CheckBookAndRepute=CS.Jyx2.Jyx2LuaBridge.jyx2_CheckBookAndRepute
+jyx2_SetTimelineSpeed = CS.Jyx2.Jyx2LuaBridge.jyx2_SetTimelineSpeed
 
 function main_getLuaFiles()
 	return {}

@@ -11,12 +11,12 @@ if AskBattle() == true then goto label0 end;
     SetOneMagic(13, 1, 92, 900);
     SetOneMagic(14, 0, 8, 900);
     SetOneMagic(15, 0, 85, 900);
-    AddHP(10, 200);
-    AddHP(11, 200);
-    AddHP(12, 200);
-    AddHP(13, 200);
-    AddHP(14, 200);
-    AddHP(15, 200);
+    AddHp(10, 200);
+    AddHp(11, 200);
+    AddHp(12, 200);
+    AddHp(13, 200);
+    AddHp(14, 200);
+    AddHp(15, 200);
     if TryBattle(15) == true then goto label1 end;
         LightScence();
         Talk(13, "小兄弟似乎需要再磨练．", "talkname13", 0);
@@ -31,12 +31,12 @@ if AskBattle() == true then goto label0 end;
         ModifyEvent(-2, 91, 0, 0, -1, -1, -1, -1, -1, -1, -2, -2, -2);
         ModifyEvent(-2, 92, 0, 0, -1, -1, -1, -1, -1, -1, -2, -2, -2);
         ModifyEvent(-2, 93, 0, 0, -1, -1, -1, -1, -1, -1, -2, -2, -2);
-        jyx2_ReplaceSceneObject("", "NPC/韦一笑", "1");--韦一笑圣火阵
-        jyx2_ReplaceSceneObject("", "NPC/殷天正1", "1");--殷天正1圣火阵
-        jyx2_ReplaceSceneObject("", "NPC/韦一笑2", "");--韦一笑2离开
-        jyx2_ReplaceSceneObject("", "NPC/殷天正2", "");--殷天正2离开
-        jyx2_ReplaceSceneObject("", "NPC/杨逍", "1");--杨逍在圣火阵出现
-        jyx2_ReplaceSceneObject("", "NPC/杨逍1", "");--杨逍房间离开
+        jyx2_ReplaceSceneObject("", "NPC/殷天正91", "");--殷天正2离开
+        jyx2_ReplaceSceneObject("", "NPC/韦一笑92", "");--韦一笑2离开
+        jyx2_ReplaceSceneObject("", "NPC/杨逍93", "");--杨逍房间离开
+        jyx2_ReplaceSceneObject("", "NPC/殷天正102", "1");--殷天正1圣火阵
+        jyx2_ReplaceSceneObject("", "NPC/杨逍104", "1");--杨逍在圣火阵出现
+        jyx2_ReplaceSceneObject("", "NPC/韦一笑103", "1");--韦一笑圣火阵
         LightScence();
         Talk(12, "果然是英雄出少年，我们这些老骨头都不行了．", "talkname12", 0);
         Talk(14, "今后武林中，就是你们这些年轻人的天下了．", "talkname14", 0);

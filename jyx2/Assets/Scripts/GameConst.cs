@@ -33,6 +33,13 @@ public class ColorStringDefine
 {
     public const string Red = "#EE2616";
     public const string Yellow = "#EFCB28";
+	
+	public const string Default="white";
+	public const string Mp_type1="orange";
+	public const string Mp_type0="#A564DB";
+	public const string Hp_posion="green";
+	public const string Hp_hurt_light="#FD726F";
+	public const string Hp_hurt_heavy="#F8413E";
 }
 
 public class GameConst
@@ -71,7 +78,7 @@ public class GameConst
     public const int MAX_ROLE_DEFENCE = 100;
     public const int MAX_ROLE_QINGGONG = 100;
     public const int MAX_ROLE_ATK_POISON = 100;
-    public const int MAX_ROLE_SHENGWANG = 100;
+    public const int MAX_ROLE_SHENGWANG = 200;
     public const int MAX_ROLE_PINDE = 100;
 
     public const int MAX_ROLE_ZIZHI = 100;
@@ -120,7 +127,7 @@ public class GameConst
 	
 	//战斗胜利结果最大显示行数
 	public const int MAX_BATTLE_RESULT_LINE_NUM=7;
-
+	
     readonly static public int[] _levelUpExpList = new int[] { 50, 100, 150, 200, 250, 300, 350, 400, 450, 500, 1100, 1200, 1300, 1400, 1500, 1600, 1700, 1800, 2400, 1500, 3150, 3300, 3450, 3650, 3700, 3900, 4050, 4200, 4350, 4500, 4600, 4800, 5000, 5100, 5200, 5300, 5500, 5600, 5800, 6000, 6200, 6400, 6600, 6800, 7000, 7200, 7400, 7600, 7800, 8000, 8200, 8400, 8600, 8800, 9200, 9600, 10000, 20000, 30000 };
 
     public const string UI_PREFAB_PATH = "Assets/Prefabs/Jyx2UI/{0}.prefab";
@@ -150,7 +157,7 @@ public class GameConst
         ["22"] = new PropertyItem(22, "Pinde", "品德", 30, 20),
         ["23"] = new PropertyItem(23, "AttackPoison", "功夫带毒", 30, 20),
         ["24"] = new PropertyItem(24, "Zuoyouhubo", "左右互搏", 30, 20),
-        ["25"] = new PropertyItem(25, "IQ", "资质", 30, 20),
+        ["25"] = new PropertyItem(25, "IQ", "资质", 100, 30),
         ["26"] = new PropertyItem(26, "Poison", "中毒", 30, 20),
     };
 

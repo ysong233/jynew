@@ -47,7 +47,7 @@ public partial class SystemUIPanel:Jyx2_UIBase
             {
                 var levelMaster = FindObjectOfType<LevelMaster>();
                 levelMaster.OnManuelSave(index);
-            }));
+            }),"选择存档位");
         });
 
         BindListener(LoadButton_Button, () => 
@@ -56,13 +56,15 @@ public partial class SystemUIPanel:Jyx2_UIBase
             {
                 StoryEngine.DoLoadGame(index);
                 Jyx2_UIManager.Instance.HideUI("SystemUIPanel");
-            }));
+            }),"选择读档位");
         });
 
         BindListener(GraphicSettingsButton_Button, delegate
         {
             Jyx2_UIManager.Instance.HideUI("SystemUIPanel");
             //runTimeHelper.ShowGraphicSettingsPanel();
+
+            Jyx2_UIManager.Instance.ShowUI(nameof(GraphicSettingsPanel));
         });
 
         BindListener(MainBg_Button, delegate

@@ -32,13 +32,14 @@ Talk(51, "历代祖宗遗训，怎可忘记．", "talkname51", 0);
 Talk(0, "这位姑娘，有如天仙，不知芳名．．．", "talkname0", 1);
 Talk(51, "这是我表妹王语嫣．她熟读各派武功精华，虽本身不会任何武功，但武学见识广．", "talkname51", 0);
 Talk(0, "王姑娘，你好．．．．", "talkname0", 1);
+ModifyEvent(-2, 2, -2, -2, -2, -2, -2, 6298, -2, -2, -2, -2, -2); --记录改变贴图，Ka941 JudgeScenePic
 if InTeam(53) == true then goto label0 end;
     Talk(51, "记得，你若想知道”天龙八部”的下落，就快去找大燕国的传国玉玺．", "talkname51", 0);
     ModifyEvent(-2, -2, -2, -2, 489, 493, -1, -2, -2, -2, -2, -2, -2);
     ModifyEvent(-2, 2, -2, -2, 490, -1, -1, -2, -2, -2, -2, -2, -2);
     do return end;
 ::label0::
-    jyx2_ReplaceSceneObject("", "NPC/duanyu", "1");--段誉
+    jyx2_ReplaceSceneObject("", "NPC/段誉", "1");--段誉
     Talk(53, "神仙姊姊．．神仙姊姊．．小生段誉想你想得好苦啊！", "talkname53", 1);
     Talk(109, "这．．．．．", "talkname109", 0);
     Talk(51, "你这呆子干什么，这样看着我表妹．", "talkname51", 0);
@@ -49,7 +50,7 @@ if InTeam(53) == true then goto label0 end;
     Talk(109, "不行，我要跟着我表哥．", "talkname109", 0);
     Talk(0, "段兄，别无礼了．慕容公子，我们告退了．", "talkname0", 1);
     Talk(51, "记得，你若想知道”天龙八部”的下落，就快去找大燕国的传国玉玺．", "talkname51", 0);
-    jyx2_ReplaceSceneObject("", "NPC/duanyu", "");--段誉
+    jyx2_ReplaceSceneObject("", "NPC/段誉", "");--段誉
     ModifyEvent(-2, -2, -2, -2, 489, 493, -1, -2, -2, -2, -2, -2, -2);
     ModifyEvent(-2, 2, -2, -2, 490, -1, -1, -2, -2, -2, -2, -2, -2);
     ModifyEvent(-2, 0, -2, -2, -1, -1, 491, -1, -1, -1, -2, -2, -2);

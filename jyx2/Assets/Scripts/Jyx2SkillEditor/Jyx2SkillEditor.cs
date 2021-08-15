@@ -25,8 +25,9 @@ public class Jyx2SkillEditor : MonoBehaviour
 
     public Jyx2SkillEditorEnemy[] enemys;
     // Start is called before the first frame update
-    void Start()
+    async void Start()
     {
+        /*
         FileSystemWatcher watcher;
 
         //监控excel文件夹
@@ -38,20 +39,25 @@ public class Jyx2SkillEditor : MonoBehaviour
         watcher.NotifyFilter = NotifyFilters.LastWrite | NotifyFilters.LastAccess | NotifyFilters.Size;
         watcher.Changed += Watcher_Changed;
         watcher.EndInit();
+        */
 
 
         player.IsInBattle = true;
-        Container.TryResolve<IXLsReloader>()?.Do();
+        //Container.TryResolve<IXLsReloader>()?.Do();
 
+        await BeforeSceneLoad.loadFinishTask;
+        
         Jyx2_UIManager.Instance.ShowUI("SkillEditorUIPanel",player,enemys);
     }
 
+    /*
     private void Watcher_Changed(object sender, FileSystemEventArgs e)
     {
         updateExcel = true;
     }
 
     bool updateExcel = false;
+    */
 
 
 
@@ -60,12 +66,24 @@ public class Jyx2SkillEditor : MonoBehaviour
     {
       
 
+        /*
         if (updateExcel)
         {
             updateExcel = false;
             Container.TryResolve<IXLsReloader>()?.Do();
         }
+        */
 
       
+    }
+
+    /// <summary>
+    /// 预览技能
+    /// </summary>
+    /// <param name="skillName"></param>
+    public void PreviewSkill(string skillName)
+    {
+        var skillEditorUIPanel = FindObjectOfType<SkillEditorUIPanel>();
+        skillEditorUIPanel.SwitchToSkill(skillName);
     }
 }

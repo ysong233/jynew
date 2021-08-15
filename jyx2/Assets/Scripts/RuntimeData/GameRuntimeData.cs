@@ -275,6 +275,13 @@ namespace Jyx2
                 return;
             }
             Team.Remove(role);
+			role.Recover();
+			for(var index=0;index< AllRoles.Count;index++){
+				if(AllRoles[index].Key==role.Key){
+					AllRoles[index]=role;
+				}
+			}
+			
 			StoryEngine.Instance.DisplayPopInfo(role.Name + "离队。");
         }
 
@@ -363,12 +370,24 @@ namespace Jyx2
             get { return Get("CurrentPos", string.Empty); }
             set { Save("CurrentPos", value); }
         }
+		
+        //当前位置
+        public string CurrentOri
+        {
+            get { return Get("CurrentOri", string.Empty); }
+            set { Save("CurrentOri", value); }
+        }
 
         //世界位置
         public string WorldPosition
         {
             get { return Get("WorldPosition", string.Empty); }
             set { Save("WorldPosition", value); }
+        }
+        public string WorldRotation
+        {
+            get { return Get("WorldRotation", string.Empty); }
+            set { Save("WorldRotation", value); }
         }
 
 
@@ -407,6 +426,12 @@ namespace Jyx2
             set { Save("TeamLevel", value); }
         }
 
+        //野球拳使用次数
+        public int YeQiuQuanCounter
+        {
+            get { return Get("YeQiuQuanCounter", 0); }
+            set { Save("YeQiuQuanCounter", value); }
+        }
 
         public int GetMoney()
         {
@@ -489,6 +514,56 @@ namespace Jyx2
                 return KeyValues[key];
             return null;
         }
+
+		public SaveableNumberDictionary<int> EventCounter
+		{
+			get {return GetPojoAutoCreate<SaveableNumberDictionary<int>>("EventCounter");}
+			set {SavePojo("EventCounter", value);}
+		}
+
+		public void AddEventCount(int scene, int eventId, int eventName, int num)
+		{
+			string key=(string.Format("{0}_{1}_{2}", scene, eventId, eventName));
+			if(EventCounter.ContainsKey(key)){
+				EventCounter[key]+=num;
+			}else{
+				EventCounter[key]=num;
+			}
+		}
+		
+		public int GetEventCount(int scene, int eventId, int eventName)
+		{
+			string key=(string.Format("{0}_{1}_{2}", scene, eventId, eventName));
+			if(EventCounter.ContainsKey(key)){
+				return EventCounter[key];
+			}
+			return 0;
+		}
+		
+		public SaveableNumberDictionary<int> MapPic
+		{
+			get {return GetPojoAutoCreate<SaveableNumberDictionary<int>>("MapPic");}
+			set {SavePojo("MapPic", value);}
+		}
+
+		public void SetMapPic(int scene, int eventId, int pic)
+		{
+			string key=(string.Format("{0}_{1}", scene, eventId));
+			if(MapPic.ContainsKey(key) && pic==-1){
+				MapPic.Remove(key);
+			}else{
+				MapPic[key]=pic;
+			}
+		}
+		
+		public int GetMapPic(int scene, int eventId)
+		{
+			string key=(string.Format("{0}_{1}", scene, eventId));
+			if(MapPic.ContainsKey(key)){
+				return MapPic[key];
+			}
+			return -1;
+		}
 
 
         //JYX2场景相关记录

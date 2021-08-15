@@ -108,12 +108,6 @@ MonoBehaviour:
     - Images
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
-  - m_GUID: 86c8a9773275fe94395335d777b1c710
-    m_Address: Assets/3D/Animation/mixamo_import
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
   - m_GUID: e53b1a87c12550645be9a654457551f4
     m_Address: Assets/BuildSource/Animations
     m_ReadOnly: 0
@@ -140,6 +134,31 @@ MonoBehaviour:
     m_TargetAsset: {fileID: 0}
   - m_GUID: 70f7ffd693113f9458aca4855897760d
     m_Address: Assets/BuildSource/EventsGraph
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 6e3891a16a6b7a84198f5cbdd8a25d59
+    m_Address: Assets/BuildSource/Skills
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - skills
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: db0f4026843c435428869e55314423e0
+    m_Address: Assets/BuildSource/Configs
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: f97fab60b5306c44e8f24d10a8c505b9
+    m_Address: Assets/Jyx2BattleScene
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 52ff8a63e5d91224eafa3d57c1662c29
+    m_Address: Assets/Jyx2Scenes
     m_ReadOnly: 0
     m_SerializedLabels: []
     m_MainAsset: {fileID: 0}

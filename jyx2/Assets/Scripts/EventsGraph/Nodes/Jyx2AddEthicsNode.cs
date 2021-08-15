@@ -8,7 +8,8 @@ using XNode;
 [NodeWidth(150)]
 public class Jyx2AddEthicsNode : Jyx2SimpleNode
 {
-    public int AddValue;
+    [Header("增加数值")]
+    public int addValue;
     
     private void Reset() {
         name = "增加道德";
@@ -16,6 +17,6 @@ public class Jyx2AddEthicsNode : Jyx2SimpleNode
 
     protected override void DoExecute()
     {
-        Jyx2LuaBridge.AddEthics(AddValue);
+        Jyx2LuaBridge.AddEthics(addValue);
     }
 }

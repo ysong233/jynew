@@ -72,12 +72,18 @@ public class BigMapZone : MonoBehaviour
 #endif
 
         var runtime = GameRuntimeData.Instance;
-        if(runtime.GetSceneEntranceCondition(mapKey) == 0)
+		var key=runtime.GetSceneEntranceCondition(mapKey);
+        if(key == 0)
         {
             return true;
-        }
-
-        return false;
+        }else if(key==2)
+		{
+			foreach(var role in runtime.Team)
+			{
+				if(role.Qinggong>=75) return true;
+			}
+		}
+		return false;
     }
 
     void ShowEnterButton(string mapKey, string command, string showText)
@@ -102,7 +108,7 @@ public class BigMapZone : MonoBehaviour
             //记录当前世界位置
             if (LevelMaster.Instance.GetCurrentGameMap().Tags.Contains("WORLDMAP"))
             {
-                GameRuntimeData.Instance.WorldPosition = UnityTools.Vector3ToString(LevelMaster.Instance.GetPlayerPosition());
+                //GameRuntimeData.Instance.WorldPosition = UnityTools.Vector3ToString(LevelMaster.Instance.GetPlayerPosition());
                 Jyx2Player.GetPlayer().RecordWorldInfo();
             }
 

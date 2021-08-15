@@ -14,6 +14,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 using HSFrameWork.ConfigTable;
+using UnityEngine;
 
 namespace Jyx2
 {
@@ -58,11 +59,11 @@ namespace Jyx2
         public List<Jyx2SkillLevel> SkillLevels; //武功等级因素
 
 
-        public Jyx2SkillDisplay Display
+        public Jyx2SkillDisplayAsset Display
         {
             get
             {
-                return ConfigTable.Get<Jyx2SkillDisplay>(Id);
+                return Jyx2SkillDisplayAsset.Get(Name);
             }
         }
     }
@@ -84,96 +85,5 @@ namespace Jyx2
 
         [XmlAttribute]
         public int KillMp; //杀伤内力
-    }
-
-    [XmlType("jyx2skillDisplay")]
-    public class Jyx2SkillDisplay : BaseBean
-    {
-        public override string PK { get { return Id; } }
-
-        public string GetAnimationController()
-        {
-            if (string.IsNullOrEmpty(AnimationController))
-                return "Assets/BuildSource/AnimationControllers/jyx2humanoidController.controller";
-            else
-                return AnimationController;
-        }
-        
-        /// <summary>
-        /// 是否是使用标准的AnimationController
-        /// </summary>
-        /// <returns></returns>
-        public bool IsStandardAnimationController()
-        {
-            return string.IsNullOrEmpty(AnimationController);
-        }
-
-        /// <summary>
-        /// 受击动画码
-        /// </summary>
-        /// <returns></returns>
-        public string GetBeHitAnimationCode()
-        {
-            if(string.IsNullOrEmpty(BehitAnim))
-                return "@Assets/BuildSource/Animations/标准受击.anim";
-            else
-            {
-                return BehitAnim;
-            }
-        }
-
-        [XmlAttribute]
-        public string Id;
-
-        [XmlAttribute]
-        public string WeaponCode;
-
-        [XmlAttribute]
-        public string AnimationController;
-
-        [XmlAttribute]
-        public string BehitAnim;
-
-        [XmlAttribute]
-        public string RunAnim;
-        
-        [XmlAttribute]
-        public string IdleAnim;
-        
-        [XmlAttribute]
-        public string AttackAnim;
-
-        [XmlAttribute]
-        public float AnimaionDelay;
-
-        [XmlAttribute]
-        public float Duration;
-
-        [XmlAttribute]
-        public float HitDelay;
-
-        [XmlAttribute]
-        public string CastEft;
-
-        [XmlAttribute]
-        public float CastDelay;
-
-        [XmlAttribute]
-        public string CastOffset;
-
-        [XmlAttribute]
-        public string BlockEft;
-
-        [XmlAttribute]
-        public float BlockDelay;
-
-        [XmlAttribute]
-        public string BlockOffset;
-
-        [XmlAttribute]
-        public string AudioEft;
-
-        [XmlAttribute]
-        public float AudioEftDelay;
     }
 }

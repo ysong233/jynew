@@ -7,6 +7,7 @@ ScenceFromTo(28, 17, 28, 24);
 jyx2_CameraFollowPlayer();
 Talk(0, "＜搞不好侠客岛上有线索？  不是有本书与”侠”字有  关联吗？＞", "talkname0", 1);
 WalkFromTo(28, 24, 28, 19);
+jyx2_WalkFromTo(-1,2819);
 Talk(0, "铜牌给我好不好？", "talkname0", 1);
 Talk(41, "恐怕不行，侠客岛所邀请的是各门派的掌门及对武学有特殊见解的武林高手．", "talkname41", 0);
 Talk(0, "那如果我打败他，是不是表示我比他有资格去．", "talkname0", 1);
@@ -19,9 +20,9 @@ if TryBattle(59) == true then goto label0 end;
     Talk(0, "前辈 ，承让了！", "talkname0", 1);
     Talk(43, "哼！白某无话可说，也无脸去喝这腊八粥．", "talkname43", 0);
     Talk(41, "好！这位兄弟，十二月初八，请到侠客岛喝碗腊八粥．", "talkname41", 0);
+    DarkScence();
     jyx2_ReplaceSceneObject("", "NPC/shizhe1", "");--使者离开
     jyx2_ReplaceSceneObject("", "NPC/shizhe2", "");--使者离开
-    DarkScence();
     ModifyEvent(-2, 12, 0, 0, -1, -1, -1, -1, -1, -1, -2, -2, -2);
     ModifyEvent(-2, 13, 0, 0, -1, -1, -1, -1, -1, -1, -2, -2, -2);
     ModifyEvent(-2, 10, 0, 0, -1, -1, -1, -1, -1, -1, -2, -2, -2);
